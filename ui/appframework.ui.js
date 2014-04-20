@@ -29,21 +29,17 @@
 
         this.availableTransitions = {};
         this.availableTransitions["default"] = this.availableTransitions.none = this.noTransition;
-        //setup the menu and boot touchLayer
+        // setup the menu and boot touchLayer
 
-        //Hack  for AMD/requireJS support
-        //set autolaunch = false
-        if ((typeof define === "function" && define.amd)||(typeof module !== "undefined" && module.exports)) {
+        // Hack for AMD/requireJS support
+        // set autolaunch = false
+        if ((typeof define === "function" && define.amd) || (typeof module !== "undefined" && module.exports)) {
             that.autoLaunch=false;
         }
 
-        /*if ($("#afui").length === 1) {
-            setupCustomTheme();
-        }*/
-
-        var setupAFDom=function(){
-            //boot touchLayer
-            //create afui element if it still does not exist
+        var setupAFDom = function(){
+            // boot touchLayer
+            // create afui element if it still does not exist
             var afui = document.getElementById("afui");
             if (afui === null) {
                 afui = document.createElement("div");
@@ -1758,11 +1754,8 @@
                 this.setBackButtonVisibility(false);
                 this.history = [];
                 $("#header #menubadge").css("float", "left");
-            } else{
-                if (this.showBackButton) 
-                    this.setBackButtonVisibility(true)  
-                else
-                    this.setBackButtonVisibility(false)
+            } else {
+                this.setBackButtonVisibility( this.showBackButton || this.showBackbutton );
             }            
             this.activeDiv = what;
             if (this.scrollingDivs[this.activeDiv.id]) {
